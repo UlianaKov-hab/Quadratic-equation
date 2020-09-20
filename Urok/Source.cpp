@@ -2,20 +2,20 @@
 #include <cmath>
 using namespace std;
 template<typename T>
-T Rivnannya(T a, T b)
+T Rivnannya(T *a, T *b)
 {
     T x;
-    x = -(b / a);
+    x = -((*b) / (*a));
     return x;
 
 }
 template<typename T>
-T Rivnannya(T a, T b, T c)
+T Rivnannya(T *a, T *b, T *c)
 {
     T D;
     T x, x1, x2;
 
-    D = (pow(b, 2) - (4 * a * c));
+    D = (pow((*b), 2) - (4 * (*a) * (*c)));
     if (D < 0)
     {
         cout << "Так как дискриминант меньше нуля то,\n"
@@ -25,7 +25,7 @@ T Rivnannya(T a, T b, T c)
     {
         cout << "Так как дискриминант равен нулю то,\n"
             "квадратное уравнение имеет один действительный корень:\n ";
-        x = -(b / (2 * a));
+        x = -((*b) / (2 * (*a)));
         cout << "x = " << x << endl;
         return x;
     }
@@ -33,8 +33,8 @@ T Rivnannya(T a, T b, T c)
     {
         cout << "Так как дискриминант больше нуля то,\n"
             "квадратное уравнение имеет два действительных корня: " << endl;
-        x1 = (-b - sqrt(D)) / (2 * a);
-        x2 = (-b + sqrt(D)) / (2 * a);
+        x1 = (-(*b) - sqrt(D)) / (2 * (*a));
+        x2 = (-(*b) + sqrt(D)) / (2 * (*a));
 
         cout << "x1 = " << x1 << endl;
         cout << "x2 = " << x2 << endl;
@@ -71,7 +71,7 @@ void main()
         {
             cout << "Если b= 0, то решений бесконечно много, поскольку любое число является решением" << endl;
         }
-        cout << "x= " << Rivnannya(a, b);
+        cout << "x= " << Rivnannya(&a, &b);
 
     }
     if (choice == 2)
@@ -88,7 +88,7 @@ void main()
         cin >> b;
         cout << "c=";
         cin >> c;
-        Rivnannya(a, b, c);
+        Rivnannya(&a, &b, &c);
 
     }
 
